@@ -19,3 +19,11 @@ Code's sections:
 - refresh and notification modules
 - scrape the data when found
 - book
+
+Example code:
+```Python
+def refresh_function(message, results):
+    results[0].refresh()
+    pyautogui.click(100, 100)
+    print("Refreshed now")
+```
