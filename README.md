@@ -44,4 +44,5 @@ def time_slot_check_Connection():
     new_html_source = driver.page_source
     return driver, new_html_source
 ```
-- wef
+- Refresh. ALthough it is tempting to refresh the page as often as possible, the refresh page too frequent would result in not fully reloaded content of the page. That would lead to not properly scraped page, or more presice - not scraped at all because the content had not loaded. 
+- Results check
