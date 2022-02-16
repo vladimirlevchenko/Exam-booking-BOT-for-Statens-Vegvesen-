@@ -13,3 +13,9 @@ The main advice from teachers in traffic schools is to refresh the Statens Vegve
 
 ## Code
 
+Code's sections:
+- connect to the webpage (autorization)
+- web page scanning
+- refresh and notification modules
+- scrape the data when found
+- book
