@@ -27,3 +27,21 @@ def refresh_function(message, results):
     pyautogui.click(100, 100)
     print("Refreshed now")
 ```
+Challenges:
+- authorization. Was overcame by setting a waiting time on ca 80 seconds - enough to login manually and choose the traffic school. When time is up, script recconects to the opened web page and continues to execute:
+
+```Python
+def time_slot_check_Connection():
+    driver = webdriver.Chrome(
+                executable_path = "/Users/vladimirlevchenko/DokumenterHD/programming/telegram_bot/chromedriver_2"
+                )
+    url = "https://www.vegvesen.no/dinside/?goto=https%3A%2F%2Fwww.vegvesen.no%2Fdinside%2Fdittforerkort%2Ftimebestilling%2F"
+
+    response = driver.get(url)
+    time.sleep(80) # waits till done logining
+
+    # Reconnect to the opened web page
+    new_html_source = driver.page_source
+    return driver, new_html_source
+```
+- wef
