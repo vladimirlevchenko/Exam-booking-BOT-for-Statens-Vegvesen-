@@ -7,9 +7,9 @@ To obtain a driver licence, one must go thorough numerous mandatory driving hour
 
 The main advice from teachers in traffic schools is to refresh the Statens Vegvesen's examination page around 1000 time per day, and jump in to the time slot when available.  
 
-🛠 **Problem**: text
+🛠 **Problem**: lack of time to check when the available spot in the calender pops up;
 
-💡 **Solution**: text
+💡 **Solution**: automate the checking routine and notify when the available spot appears!
 
 ## Code
 
