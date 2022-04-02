@@ -20,6 +20,13 @@ The main advice from teachers in traffic schools is to refresh the Statens Vegve
 5. Wait till the bot finds a first available date.
 6. Type "Book" to reserve a found time slot. 
 
+<p align="center">
+<img src="images/apps_interface.png" width="600">
+  </p>
+<figcaption align = "center"> 
+  <b>Fig.2 Application's interface.</b>
+</figcaption>
+
 ## Code
 
 Code's sections:
