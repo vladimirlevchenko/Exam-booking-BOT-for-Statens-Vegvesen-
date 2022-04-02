@@ -13,7 +13,7 @@ The main advice from teachers in traffic schools is to refresh the Statens Vegve
 
 ## How is works
 
-1. You execute the code on your laptop.
+1. Execute the .py script on your laptop.
 2. Start the bot in Telegram. The name is "SlotBookingBot"
 3. Type "Start searching"
 4. A new page in Google chrome browser will appear with Statens Vegvesens web page. You have 80 seconds to authorize and find a driving school you want to find a place in.
@@ -30,12 +30,12 @@ The main advice from teachers in traffic schools is to refresh the Statens Vegve
 
 ## Code
 
-Code's sections:
-- connect to the webpage (autorization)
-- web page scanning
-- refresh and notification modules
-- scrape the data when found
-- book
+The script´s algorithm is as follows:
+1. Connect to the webpage (autorization)
+2. Web page scanning (scraping)
+3. Refresh and execute step 2
+4. Send notifications 
+5. Book when a spot has been found
 
 Bot is activated by executing */start* command, which greets the user and introduces the important parameters. The listed parameters are "Refresh frequency", "Runtime", "Book" and "Start searching". The first two variables allow user to set how often one wants to refresh the page before its contents would be scraped, the default value is 25 seconds, meaning the the page would be refreshed every 25 secons. This value is not random - because of the dynamic nature of the web page that we are scraping (Statens Vegvesen) its elements are not uploaded immidiately when the page has been refreshed. It was found that the page´s contents are fully loaded after 10-15 seconds, so to be on the safe side one should choose refresh frequency somewhere between 15 and 25 seconds. *Runtime* - tells how long the scraping should be running. The default values is 2 hours. 
 
@@ -55,7 +55,7 @@ def welcome(message):
 ```
 
 Challenges:
-- authorization. Was overcame by setting a waiting time on ca 80 seconds - enough to login manually and choose the traffic school. When time is up, script recconects to the opened web page and continues to execute:
+- Authorization. Was overcame by setting a waiting time on ca 80 seconds - enough to login manually and choose the traffic school. When time is up, script recconects to the opened web page and continues to execute:
 
 ```Python
 def time_slot_check_Connection():
@@ -134,3 +134,13 @@ def search_check(message, results):
 ```
 
 - Book
+Text here
+```Python
+def booking(results):
+    results[0].execute_script("arguments[0].click();", WebDriverWait(results[0], 2).until(EC.element_to_be_clickable((By.XPATH, "//label[@for='ledige-timer-0']"))))
+    button = results[0].find_element_by_xpath('//button[@class="knapp knapp-neste knapp-handling"]')
+    button.click()
+    results[0].execute_script("arguments[0].click();", WebDriverWait(results[0], 2).until(EC.element_to_be_clickable((By.XPATH, "//label[@for='bekreft']"))))
+    button = results[0].find_element_by_xpath('//button[@class="knapp knapp-handling knapp-neste"]')
+    button.click()
+```
