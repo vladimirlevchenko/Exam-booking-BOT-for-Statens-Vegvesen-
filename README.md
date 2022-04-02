@@ -11,6 +11,11 @@ The main advice from teachers in traffic schools is to refresh the Statens Vegve
 
 💡 **Solution**: automate the checking routine and notify when the available spot appears!
 
+## How is works
+
+1. You execute the code on your laptop.
+2. Start the bot in Telegram. The name is "SlotbookingBot"
+
 ## Code
 
 Code's sections:
