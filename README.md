@@ -22,6 +22,7 @@ The main advice from teachers in traffic schools is to refresh the Statens Vegve
 
 <p align="center">
 <img src="images/IMG_8723.PNG" width="200">
+<img src="images/IMG_8843.PNG" width="200">
   </p>
 <figcaption align = "center"> 
   <b>Fig.2 Application's interface.</b>
