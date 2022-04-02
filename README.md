@@ -14,7 +14,11 @@ The main advice from teachers in traffic schools is to refresh the Statens Vegve
 ## How is works
 
 1. You execute the code on your laptop.
-2. Start the bot in Telegram. The name is "SlotbookingBot"
+2. Start the bot in Telegram. The name is "SlotBookingBot"
+3. Type "Start searching"
+4. A new page in Google chrome browser will appear with Statens Vegvesens web page. You have 80 seconds to authorize and find a driving school you want to find a place in.
+5. Wait till the bot finds a first available date.
+6. Type "Book" to reserve a found time slot. 
 
 ## Code
 
