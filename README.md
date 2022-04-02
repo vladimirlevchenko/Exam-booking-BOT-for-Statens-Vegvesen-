@@ -21,7 +21,7 @@ The main advice from teachers in traffic schools is to refresh the Statens Vegve
 6. Type "Book" to reserve a found time slot. 
 
 <p align="center">
-<img src="images/IMG_8834.png" width="600">
+<img src="images/IMG-8834.png" width="600">
   </p>
 <figcaption align = "center"> 
   <b>Fig.2 Application's interface.</b>
