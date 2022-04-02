@@ -1,5 +1,5 @@
 # Exam-booking-BOT-for-Statens-Vegvesen-
-A script that monitors the first available examination date with notifications in Telegram
+A script that monitors the first available examination date and sends it to Telegram  as notification.
 
 ## Background
 Statens vegvesen is a norwegian institution that is responsible for roads, vehicle regulations and driver licencing. The latter will be the main focus of this project.
@@ -19,6 +19,8 @@ Code's sections:
 - refresh and notification modules
 - scrape the data when found
 - book
+
+Bot is activated by executing */start* command, which greets the user and introduces the important parameters. The listed parameters are "Refresh frequency", "Runtime", "Book" and "Start searching". The first two variables allow user to set how often one wants to refresh the page before its contents would be scraped, the default value is 25 seconds, meaning the the page would be refreshed every 25 secons. This value is not random - because of the dynamic nature of the web page that we are scraping (Statens Vegvesen) its elements are not uploaded immidiately when the page has been refreshed. It was found that the page´s contents are fully loaded after 10-15 seconds, so to be on the safe side one should choose refresh frequency somewhere between 15 and 25 seconds. *Runtime* - tells how long the scraping should be running. The default values is 2 hours. 
 
 Example code:
 ```Python
@@ -46,3 +48,4 @@ def time_slot_check_Connection():
 ```
 - Refresh. ALthough it is tempting to refresh the page as often as possible, the refresh page too frequent would result in not fully reloaded content of the page. That would lead to not properly scraped page, or more presice - not scraped at all because the content had not loaded. 
 - Results check
+- Book
