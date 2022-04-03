@@ -24,9 +24,6 @@ The main advice from teachers in traffic schools is to refresh the Statens Vegve
 <img src="images/IMG_8723.PNG" width="200">
 <img src="images/IMG_8834.PNG" width="200">
   </p>
-<figcaption align = "center"> 
-  <b>Fig.2 Application's interface.</b>
-</figcaption>
 
 ## Code
 
@@ -55,7 +52,7 @@ def welcome(message):
 ```
 
 Challenges:
-- Authorization. Was overcame by setting a waiting time on ca 80 seconds - enough to login manually and choose the traffic school. When time is up, script recconects to the opened web page and continues to execute:
+- Authorization. It was overcome by setting a waiting time on ca 80 seconds - enough to login manually and choose the traffic school. When time is up, the script recconects to the opened web page and continues to execute:
 
 ```Python
 def time_slot_check_Connection():
@@ -71,7 +68,7 @@ def time_slot_check_Connection():
     new_html_source = driver.page_source
     return driver, new_html_source
 ```
-- Refresh. ALthough it is tempting to refresh the page as often as possible, the refresh page too frequent would result in not fully reloaded content of the page. That would lead to not properly scraped page, or more presice - not scraped at all because the content had not loaded. 
+- Refresh. Although it is tempting to refresh the page as often as possible, the refresh page too frequent would result in not fully reloaded content of the page. That would lead to not properly scraped page, or presicely - not scraped at all because the content was not fully loaded. 
 
 ```Python
 def func_refresh_frequency(message):
@@ -133,8 +130,7 @@ def search_check(message, results):
             bot.send_message(message.chat.id, f"Date: {y}{first_available_slot[-17:-9]}\nTime:{scraped_days[y]}")
 ```
 
-- Book
-Text here
+- Book. The first available time slot can be booked directly via Telegram by typing "Book" to the bot:
 ```Python
 def booking(results):
     results[0].execute_script("arguments[0].click();", WebDriverWait(results[0], 2).until(EC.element_to_be_clickable((By.XPATH, "//label[@for='ledige-timer-0']"))))
