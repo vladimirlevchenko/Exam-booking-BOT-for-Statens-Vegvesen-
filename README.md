@@ -2,12 +2,12 @@
 🤖 A script that monitors the first available examination date and sends it to Telegram  as notification.
 
 ## Background
-Statens vegvesen is a norwegian institution that is responsible for roads, vehicle regulations and driver licencing. The latter will be the main focus of this project.
-To obtain a driver licence, one must go thorough numerous mandatory driving hours, theory, and, of course, practical driving test. This final test (or exam if you wish) one must book via Statens Vegvesen's web page which unfortunately does not always offer that many spots available. In most of the times, there are no available dates to book and the only way to get an empty spot is to simply wait until someone else cancels his/her appointment so you can jump in.
+Statens Vegvesen is a Norwegian institution that is responsible for roads, vehicle regulations, and driver licensing. The latter will be the main focus of this project.
+To obtain a driver's license, one must go through numerous mandatory driving hours, theory, and, of course, practical driving tests. For this final test (or exam if you wish) one must book via Statens Vegvesen's web page which unfortunately does not always offer that many spots available. Most of the time, there are no available dates to book, and the only way to get an empty spot is to simply wait until someone else cancels his/her appointment so you can jump in.
 
 The main advice from teachers in traffic schools is to refresh the Statens Vegvesen's examination page around 1000 time per day, and jump in to the time slot when available.  
 
-🛠 **Problem**: lack of time to check when the available spot in the calender pops up;
+🛠 **Problem**: lack of time to check when the available spot in the calendar pops up;
 
 💡 **Solution**: automate the checking routine and notify when the available spot appears!
 
@@ -16,8 +16,8 @@ The main advice from teachers in traffic schools is to refresh the Statens Vegve
 1. Execute the .py script on your laptop.
 2. Start the bot in Telegram. The name is "SlotBookingBot"
 3. Type "Start searching"
-4. A new page in Google chrome browser will appear with Statens Vegvesens web page. You have 80 seconds to authorize and find a driving school you want to find a place in.
-5. Wait till the bot finds a first available date.
+4. A new page in the Google Chrome browser will appear with Statens Vegvesens web page. You have 80 seconds to authorize and find a driving school you want to find a place in.
+5. Wait till the bot finds the first available date.
 6. Type "Book" to reserve a found time slot. 
 
 <p align="center">
@@ -28,13 +28,13 @@ The main advice from teachers in traffic schools is to refresh the Statens Vegve
 ## Code
 
 The script´s algorithm is as follows:
-1. Connect to the webpage (autorization)
+1. Connect to the webpage (authorization).
 2. Web page scanning (scraping)
-3. Refresh and execute step 2
-4. Send notifications 
-5. Book when a spot has been found
+3. Refresh and execute step 2.
+4. Send notifications. 
+5. Book when a spot has been found.
 
-Bot is activated by executing */start* command, which greets the user and introduces the important parameters. The listed parameters are "Refresh frequency", "Runtime", "Book" and "Start searching". The first two variables allow user to set how often one wants to refresh the page before its contents would be scraped, the default value is 25 seconds, meaning the the page would be refreshed every 25 secons. This value is not random - because of the dynamic nature of the web page that we are scraping (Statens Vegvesen) its elements are not uploaded immidiately when the page has been refreshed. It was found that the page´s contents are fully loaded after 10-15 seconds, so to be on the safe side one should choose refresh frequency somewhere between 15 and 25 seconds. *Runtime* - tells how long the scraping should be running. The default values is 2 hours. 
+The bot is activated by executing /start command, which greets the user and introduces the important parameters. The listed parameters are "Refresh frequency", "Runtime", "Book" and "Start searching". The first two variables allow the user to set how often one wants to refresh the page before its contents would be scraped, the default value is 25 seconds, meaning the page would be refreshed every 25 seconds. This value is not random - because of the dynamic nature of the web page that we are scraping (Statens Vegvesen) its elements are not uploaded immediately when the page has been refreshed. It was found that the page´s contents are fully loaded after 10-15 seconds, so to be on the safe side one should choose refresh frequency somewhere between 15 and 25 seconds. *Runtime* - tells how long the scraping should be running. The default value is 2 hours. 
 
 ```Python
 @bot.message_handler(commands=["start"])
@@ -52,7 +52,7 @@ def welcome(message):
 ```
 
 Challenges:
-- Authorization. It was overcome by setting a waiting time on ca 80 seconds - enough to login manually and choose the traffic school. When time is up, the script recconects to the opened web page and continues to execute:
+- Authorization. Authorization. The Statens Vegvesen's servers are blocking the requests from the outside when one wants to scrape their web pages. The trick here was to let the server think that it is not a robot that enters the web page and sends requests, but a human. It was implemented by letting the script open the log-in web page first, then the user would log in manually, and then the script pick-ups where the user left. For these actions a waiting time of ca 80 seconds was set - enough to log in manually and choose the traffic school. When time is up, the script reconnects to the opened web page and continues to execute:
 
 ```Python
 def time_slot_check_Connection():
@@ -68,7 +68,7 @@ def time_slot_check_Connection():
     new_html_source = driver.page_source
     return driver, new_html_source
 ```
-- Refresh. Although it is tempting to refresh the page as often as possible, the refresh page too frequent would result in not fully reloaded content of the page. That would lead to not properly scraped page, or presicely - not scraped at all because the content was not fully loaded. 
+- Refresh. Although it is tempting to refresh the page as often as possible, a too frequent refresh would result in not fully loaded content on the page. That would lead to not properly scraped page, or precisely - not scraped at all because the content was not fully loaded.
 
 ```Python
 def func_refresh_frequency(message):
@@ -140,3 +140,6 @@ def booking(results):
     button = results[0].find_element_by_xpath('//button[@class="knapp knapp-handling knapp-neste"]')
     button.click()
 ```
+When an available date appears, the script will parse the page and extract the new available date.
+Please let me know if you have any questions or want to tailor the script to your own needs 😊
+Thank you for reading!
