@@ -1,5 +1,5 @@
 # Exam-booking-BOT-for-Statens-Vegvesen-
-A script that monitors the first available examination date and sends it to Telegram  as notification.
+🤖 A script that monitors the first available examination date and sends it to Telegram  as notification.
 
 ## Background
 Statens vegvesen is a norwegian institution that is responsible for roads, vehicle regulations and driver licencing. The latter will be the main focus of this project.
